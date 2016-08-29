@@ -17,24 +17,14 @@ RUN apk add --update \
 
 # the DotNet build gem, installs semver too
 RUN gem install albacore
+# manage nuget packages
+RUN gem install nuget
 
 # cleanup unused packages
 RUN apk del \
-	alpine-sdk \
 	ruby-dev \
-	zlib-dev
+	zlib-dev \
+	alpine-sdk
 
 # cleanup cache
 RUN rm -rf /var/cache/apk/*
-
-# Copy source and build
-
-#  Copy C# solution folder
-#  Docker cache is smart to catch any folder/file changes and rebuild from here onwards only
-
-
-#  Change to folder where rake is
-
-
-# run rake
-#RUN rake
